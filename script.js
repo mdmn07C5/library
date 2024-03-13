@@ -1,26 +1,16 @@
-// class Book {
-//     constructor(title, author, pages, read) {
-//         this.title = title;
-//         this.author = author;
-//         this.pages = pages;
-//         this.read = read;
-//     }
-
-//     info() {
-//         return [this.title, this.author, this.pages, this.read].join(', ');
-//     };
-// }
 
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
 
-    this.info = function() {
-        return [this.title, this.author, this.pages, this.read];    
+        this.info = function () {
+            return [this.title, this.author, this.pages, this.read];
+        };
     }
 }
 
@@ -34,8 +24,8 @@ function newDomElmnt(type) {
 
 function createBookCard(book, index) {
     const bookCard = newDomElmnt('div');
-        
     bookCard.classList.add('card');
+    bookCard.setAttribute('data-index', index);
 
     const bookImage = newDomElmnt('div');
     bookImage.classList.add('image');
@@ -48,16 +38,17 @@ function createBookCard(book, index) {
         const p = newDomElmnt('p');
         p.innerHTML = e;
         bookInfo.appendChild(p);
-    })
+    });
     bookCard.appendChild(bookInfo);
 
-    const removeButton = document.createElement('button');
+    const removeButton = newDomElmnt('button');
+    removeButton.innerHTML = 'Remove';
+    bookCard.appendChild(removeButton);
     
     return bookCard;
 }
 
-
-function showLibrary() {
+function renderLibrary() {
     const libraryContainer = document.querySelector('#library');
 
     myLibrary.forEach((book, index) => {
@@ -65,25 +56,6 @@ function showLibrary() {
         libraryContainer.appendChild(bookCard);
     })
 }
-
-
-addBookToLibrary('The Black Company', 'Cook, Glenn', 320, true);
-addBookToLibrary('Gardens of the Moon', 'Erikson, Steven', 666, true);
-addBookToLibrary('Silmarillion', 'Tolkien, J.R.R.', 432, false);
-
-
-showLibrary()
-
-
-const newBookDialog = document.querySelector('#newBook');
-const showButton = document.querySelector('#showDialog');
-showButton.addEventListener('click', () => {
-    newBookDialog.showModal();
-})
-
-const addNewBookButton = document.querySelector('#addNewBookBtn');
-const outputBox = document.querySelector('output');
-
 
 function addNewBookFromDialog() {
     const titleInput = document.querySelector('#title').value;
@@ -102,16 +74,30 @@ function addNewBookFromDialog() {
     newBookDialog.close();
 }
 
+addBookToLibrary('The Black Company', 'Cook, Glenn', 320, true);
+addBookToLibrary('Gardens of the Moon', 'Erikson, Steven', 666, true);
+addBookToLibrary('Silmarillion', 'Tolkien, J.R.R.', 432, false);
+
+showLibrary()
+
+const newBookDialog = document.querySelector('#newBook');
+const showButton = document.querySelector('#showDialog');
+const addNewBookButton = document.querySelector('#addNewBookBtn');
+const outputBox = document.querySelector('output');
+
+showButton.addEventListener('click', () => {
+    newBookDialog.showModal();
+})
+
 addNewBookButton.addEventListener('click', () => {
     addNewBookFromDialog();
 })
 
 
-
-myLibrary.forEach((book, i) => {
-    console.log(book.info() + ': ' + i);
-})
-myLibrary.splice(1, 1);
-myLibrary.forEach((book, i) => {
-    console.log(book.info() + ': ' + i);
-})
+// myLibrary.forEach((book, i) => {
+//     console.log(book.info() + ': ' + i);
+// })
+// myLibrary.splice(1, 1);
+// myLibrary.forEach((book, i) => {
+//     console.log(book.info() + ': ' + i);
+// })
