@@ -6,6 +6,7 @@
 .card {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr auto;
     height: 200px;
     width: 350px;
     position: relative;
@@ -13,11 +14,13 @@
 
 .card .image {
     grid-column: 1 / 2;
+    grid-row: 1 / 3;
     border: 1px dashed purple;
 }
 
 .card .info {
     grid-column: 2 / 3;
+    grid-row: 1 / 2;
     display: flex;
     flex-direction: column;
     border: 1px dashed green;

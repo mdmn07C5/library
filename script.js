@@ -42,9 +42,13 @@ function createBookCard(book, index) {
         <h3>${book.title}</h3>
         <p>Author: ${book.author}</p>
         <p>Pages: ${book.pages}</p>
-        <p>${book.read ? 'Read' : 'Unread'}</p>
     `
     bookCard.appendChild(bookInfo);
+
+    const readButton = newDomElmnt('button');
+    readButton.classList.add('read-toggle');
+    readButton.innerHTML = book.read ? 'Read' : 'Unread';
+    bookCard.appendChild(readButton);
 
     const removeButton = newDomElmnt('button');
     removeButton.innerHTML = 'Remove';
@@ -84,7 +88,9 @@ function removeFromLibrary(bookCardElement) {
     renderLibrary();
 }
 
-
+function toggleRead() {
+    // TODO
+}
 
 addBookToLibrary('The Black Company', 'Cook, Glenn', 320, true);
 addBookToLibrary('Gardens of the Moon', 'Erikson, Steven', 666, true);
@@ -106,8 +112,12 @@ addNewBookButton.addEventListener('click', () => {
 })
 
 libraryContainer.addEventListener('click', function(event) {
-    console.log(event.target.className);
+
     if (event.target.className === 'remove-btn') {
         removeFromLibrary(event.target.parentElement);
+    }
+
+    if (event.target.className === 'read-toggle') {
+        // TODO
     }
 })
