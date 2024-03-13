@@ -88,6 +88,7 @@ addBookToLibrary('Silmarillion', 'Tolkien, J.R.R.', 432, false);
 
 renderLibrary()
 
+const libraryContainer = document.querySelector('#library');
 const newBookDialog = document.querySelector('#newBook');
 const showButton = document.querySelector('#showDialog');
 const addNewBookButton = document.querySelector('#addNewBookBtn');
@@ -102,9 +103,8 @@ addNewBookButton.addEventListener('click', () => {
     addNewBookFromDialog();
 })
 
-removeButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-        removeFromLibrary(button.parentElement);
-        console.log('removeButtonClicked');
-    })
+libraryContainer.addEventListener('click', function(event) {
+    if (event.target.className === 'remove-btn') {
+        removeFromLibrary(event.target.parentElement);
+    }
 })
