@@ -44,6 +44,7 @@ function createBookCard(book, index) {
 
     const removeButton = newDomElmnt('button');
     removeButton.innerHTML = 'Remove';
+    removeButton.classList.add('remove-btn');
     bookCard.appendChild(removeButton);
     
     return bookCard;
@@ -51,6 +52,7 @@ function createBookCard(book, index) {
 
 function renderLibrary() {
     const libraryContainer = document.querySelector('#library');
+    libraryContainer.innerHTML = '';
 
     myLibrary.forEach((book, index) => {
         const bookCard = createBookCard(book, index);
@@ -67,12 +69,18 @@ function addNewBookFromDialog() {
     pagesInput = isNaN(pagesInput) ? 0 : pagesInput;
     addBookToLibrary(titleInput, authorInput, pagesInput, readInput);
 
-    // clear library
-    document.querySelector('#library').innerHTML = '';
     renderLibrary();
 
     newBookDialog.close();
 }
+
+function removeFromLibrary(bookCardElement) {
+    const index = bookCardElement.getAttribute('data-index');
+    myLibrary.splice(Number.parseInt(index), 1);
+    renderLibrary();
+}
+
+
 
 addBookToLibrary('The Black Company', 'Cook, Glenn', 320, true);
 addBookToLibrary('Gardens of the Moon', 'Erikson, Steven', 666, true);
@@ -84,6 +92,7 @@ const newBookDialog = document.querySelector('#newBook');
 const showButton = document.querySelector('#showDialog');
 const addNewBookButton = document.querySelector('#addNewBookBtn');
 const outputBox = document.querySelector('output');
+const removeButtons = document.querySelectorAll('.remove-btn');
 
 showButton.addEventListener('click', () => {
     newBookDialog.showModal();
@@ -93,10 +102,9 @@ addNewBookButton.addEventListener('click', () => {
     addNewBookFromDialog();
 })
 
-// myLibrary.forEach((book, i) => {
-//     console.log(book.info() + ': ' + i);
-// })
-// myLibrary.splice(1, 1);
-// myLibrary.forEach((book, i) => {
-//     console.log(book.info() + ': ' + i);
-// })
+removeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        removeFromLibrary(button.parentElement);
+        console.log('removeButtonClicked');
+    })
+})
