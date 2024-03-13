@@ -1,0 +1,24 @@
+
+.card {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    height: 200px;
+    width: 350px;
+}
+
+.card .image {
+    grid-column: 1 / 2;
+    border: 1px dashed purple;
+}
+
+.card .info {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    border: 1px dashed green;
+}
+
+#newBook form {
+    display: flex;
+    flex-direction: column;
+}
