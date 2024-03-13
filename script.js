@@ -12,6 +12,10 @@ class Book {
             return [this.title, this.author, this.pages, this.read];
         };
     }
+
+    toggleRead() {
+        this.read = !this.read;
+    }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -102,6 +106,7 @@ addNewBookButton.addEventListener('click', () => {
 })
 
 libraryContainer.addEventListener('click', function(event) {
+    console.log(event.target.className);
     if (event.target.className === 'remove-btn') {
         removeFromLibrary(event.target.parentElement);
     }

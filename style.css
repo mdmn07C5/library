@@ -1,9 +1,14 @@
+#library {
+    display: flex;
+    gap: 10px;
+}
 
 .card {
     display: grid;
-    grid-template-columns: 1fr 2fr auto;
+    grid-template-columns: 1fr 2fr;
     height: 200px;
     width: 350px;
+    position: relative;
 }
 
 .card .image {
@@ -21,4 +26,13 @@
 #newBook form {
     display: flex;
     flex-direction: column;
+}
+
+.remove-btn {
+    width: 2em;
+    height: 2em;
+    background-color: brown;
+    position: absolute;
+    right: 1em;
+    top: 1em;
 }
