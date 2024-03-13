@@ -67,10 +67,9 @@ function addNewBookFromDialog() {
     pagesInput = isNaN(pagesInput) ? 0 : pagesInput;
     addBookToLibrary(titleInput, authorInput, pagesInput, readInput);
 
-    // create new book card to display on page
-    const newBook = createBookCard(myLibrary.at(-1));
-    document.querySelector('#library').appendChild(newBook);
-
+    // clear library
+    document.querySelector('#library').innerHTML = '';
+    renderLibrary();
 
     newBookDialog.close();
 }
