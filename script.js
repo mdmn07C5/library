@@ -34,11 +34,12 @@ function createBookCard(book, index) {
 
     const bookInfo = newDomElmnt('div');
     bookInfo.classList.add('info');
-    book.info().forEach((e) => {
-        const p = newDomElmnt('p');
-        p.innerHTML = e;
-        bookInfo.appendChild(p);
-    });
+    bookInfo.innerHTML = `
+        <h3>${book.title}</h3>
+        <p>Author: ${book.author}</p>
+        <p>Pages: ${book.pages}</p>
+        <p>${book.read ? 'Read' : 'Unread'}</p>
+    `
     bookCard.appendChild(bookInfo);
 
     const removeButton = newDomElmnt('button');
@@ -78,7 +79,7 @@ addBookToLibrary('The Black Company', 'Cook, Glenn', 320, true);
 addBookToLibrary('Gardens of the Moon', 'Erikson, Steven', 666, true);
 addBookToLibrary('Silmarillion', 'Tolkien, J.R.R.', 432, false);
 
-showLibrary()
+renderLibrary()
 
 const newBookDialog = document.querySelector('#newBook');
 const showButton = document.querySelector('#showDialog');
@@ -92,7 +93,6 @@ showButton.addEventListener('click', () => {
 addNewBookButton.addEventListener('click', () => {
     addNewBookFromDialog();
 })
-
 
 // myLibrary.forEach((book, i) => {
 //     console.log(book.info() + ': ' + i);
