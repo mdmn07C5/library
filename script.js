@@ -88,12 +88,10 @@ addBookToLibrary('Silmarillion', 'Tolkien, J.R.R.', 432, false);
 
 renderLibrary()
 
-const libraryContainer = document.querySelector('#library');
-const newBookDialog = document.querySelector('#newBook');
 const showButton = document.querySelector('#showDialog');
+const newBookDialog = document.querySelector('#newBook');
 const addNewBookButton = document.querySelector('#addNewBookBtn');
-const outputBox = document.querySelector('output');
-const removeButtons = document.querySelectorAll('.remove-btn');
+const libraryContainer = document.querySelector('#library');
 
 showButton.addEventListener('click', () => {
     newBookDialog.showModal();
