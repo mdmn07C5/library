@@ -33,7 +33,6 @@ function createBookCard(book, index) {
 
     const bookImage = newDomElmnt('div');
     bookImage.classList.add('image');
-    bookImage.style.backgroundColor = 'gray';
     bookCard.appendChild(bookImage);
 
     const bookInfo = newDomElmnt('div');
@@ -102,7 +101,6 @@ function toggleRead(element) {
     element.classList = 'read-toggle'
     element.classList.add(book.read ? 'read' : 'unread');
     element.innerHTML = `${book.read ? 'Read' : 'Unread'}`;
-    console.log(myLibrary);
 }
 
 addBookToLibrary('The Black Company', 'Cook, Glenn', 320, true);
@@ -111,7 +109,7 @@ addBookToLibrary('Silmarillion', 'Tolkien, J.R.R.', 432, false);
 
 renderLibrary()
 
-const showButton = document.querySelector('#showDialog');
+const showButton = document.querySelector('#show-dialog');
 const newBookDialog = document.querySelector('#newBook');
 const addNewBookButton = document.querySelector('#addNewBookBtn');
 const libraryContainer = document.querySelector('#library');
