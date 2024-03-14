@@ -69,27 +69,18 @@ nav,
     flex-direction: column;
 }
 
-.remove-btn {
-    width: 2em;
-    height: 2em;
-    background-color: lightgray;
-    color: white;
-    border-radius: 50%;
-    border: 2px solid gray;
-    position: absolute;
-    right: 1em;
-    top: 1em;
-
+.button-group {
     display: grid;
-    justify-content: center;
-    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
 }
 
-.remove-btn > svg {
-    width: 1.5em;
-    path {
-        fill: white;
-    }
+.remove-btn,
+.read-toggle {
+    align-self: center;
+    border-style: none;
+    border-radius: 10px;
 }
 
 #show-dialog {
@@ -101,10 +92,3 @@ nav,
     border-radius: 10px;
 }
 
-.read-toggle {
-    height: 2.5em;
-    width: 9em;
-    align-self: center;
-    border-style: none;
-    border-radius: 10px;
-}
