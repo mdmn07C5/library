@@ -59,6 +59,7 @@ function createBookCard(book, index) {
     buttonGroup.appendChild(removeButton);
 
     bookCard.appendChild(buttonGroup);
+    bookCard.classList.add('shadow');
     
     return bookCard;
 }
