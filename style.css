@@ -1,3 +1,7 @@
+:root {
+    font-family: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
+}
+
 #library {
     display: flex;
     gap: 10px;
@@ -34,8 +38,27 @@
 .remove-btn {
     width: 2em;
     height: 2em;
-    background-color: brown;
+    background-color: lightgray;
+    color: white;
+    border-radius: 50%;
+    border: 2px solid gray;
     position: absolute;
     right: 1em;
     top: 1em;
+
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.remove-btn > img {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.remove-btn > svg {
+    width: 1.5em;
+    path {
+        fill: white;
+    }
 }

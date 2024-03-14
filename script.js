@@ -52,8 +52,13 @@ function createBookCard(book, index) {
     bookCard.appendChild(bookInfo);
     
     const removeButton = newDomElmnt('button');
-    removeButton.innerHTML = 'Remove';
     removeButton.classList.add('remove-btn');
+    removeButton.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>trash-can-outline</title>
+            <path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" />
+        </svg>
+    `
     bookCard.appendChild(removeButton);
     
     return bookCard;
@@ -120,8 +125,8 @@ addNewBookButton.addEventListener('click', () => {
 })
 
 libraryContainer.addEventListener('click', function(event) {
-
-    if (event.target.className === 'remove-btn') {
+    console.log(event.target);
+    if (event.target.parentElement.className === 'remove-btn') {
         removeFromLibrary(event.target.parentElement);
     }
 
