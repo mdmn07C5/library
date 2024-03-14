@@ -49,6 +49,7 @@ function createBookCard(book, index) {
     
     const readButton = newDomElmnt('button');
     readButton.classList.add('read-toggle');
+    readButton.classList.add(book.read ? 'read' : 'unread');
     readButton.innerHTML = book.read ? 'Read' : 'Unread';
     buttonGroup.appendChild(readButton);
     
@@ -95,7 +96,7 @@ function removeFromLibrary(bookCardElement) {
 function toggleRead(element) {
     const index = element.parentElement.parentElement.getAttribute('data-index');
     const book = myLibrary[Number.parseInt(index)];
-    book.toggleRead()
+    book.toggleRead();
 
     element.classList = 'read-toggle'
     element.classList.add(book.read ? 'read' : 'unread');
@@ -126,7 +127,7 @@ libraryContainer.addEventListener('click', function(event) {
         removeFromLibrary(event.target.parentElement);
     }
 
-    if (event.target.className === 'read-toggle') {
+    if (event.target.className.includes('read-toggle')) {
         toggleRead(event.target);
     }
 })
