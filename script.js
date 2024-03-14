@@ -43,13 +43,14 @@ function createBookCard(book, index) {
         <p>Author: ${book.author}</p>
         <p>Pages: ${book.pages}</p>
     `
-    bookCard.appendChild(bookInfo);
 
     const readButton = newDomElmnt('button');
     readButton.classList.add('read-toggle');
     readButton.innerHTML = book.read ? 'Read' : 'Unread';
-    bookCard.appendChild(readButton);
+    bookInfo.appendChild(readButton);
 
+    bookCard.appendChild(bookInfo);
+    
     const removeButton = newDomElmnt('button');
     removeButton.innerHTML = 'Remove';
     removeButton.classList.add('remove-btn');
@@ -88,8 +89,15 @@ function removeFromLibrary(bookCardElement) {
     renderLibrary();
 }
 
-function toggleRead() {
-    // TODO
+function toggleRead(element) {
+    const index = element.parentElement.parentElement.getAttribute('data-index');
+    const book = myLibrary[Number.parseInt(index)];
+    book.toggleRead()
+
+    element.classList = 'read-toggle'
+    element.classList.add(book.read ? 'read' : 'unread');
+    element.innerHTML = `${book.read ? 'Read' : 'Unread'}`;
+    console.log(myLibrary);
 }
 
 addBookToLibrary('The Black Company', 'Cook, Glenn', 320, true);
@@ -118,6 +126,6 @@ libraryContainer.addEventListener('click', function(event) {
     }
 
     if (event.target.className === 'read-toggle') {
-        // TODO
+        toggleRead(event.target);
     }
 })
